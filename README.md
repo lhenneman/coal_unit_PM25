@@ -2,7 +2,7 @@
 This repository describes data maintained for public use from the manuscript "22 years of PM2.5 coal source impacts with the HyADS model" by L. Henneman et al. (in review). The data is stored on an [Open Science Framework project site](https://osf.io/8gdau/?view_only=8c4d01e3187f409ea4da93c292e33e1b).
 
 ## Available data
-There are three datasets stored on the OSF page:
+There are three datasets stored on the OSF page. This repository describes how to read in and manipulate the first two datasets (coal source impacts).
 - coal source impacts
   - summed impacts from all units (files named in the format "grids_pm25_total_YYYY.fst")
   - impacts from each coal unit (files named in the format "grids_pm25_byunit_YYYY.fst")
