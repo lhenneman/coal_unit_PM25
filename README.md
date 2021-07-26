@@ -3,8 +3,14 @@ The data is provided in two formats: total PM2.5 source impacts and coal unit-sp
 
 The data is stored on an Open Science Framework project site: [https://osf.io/8gdau/]
 
+There are three datasets stored on the OSF site:
+- coal source impacts
+  - summed impacts from all units
+  - impacts from each coal unit
+- formatted data on coal facility attributes from the [US EPA's Air Markets Program Database](https://ampd.epa.gov/ampd/)
+
 ## Data storage format
-The data is stored as compressed `.fst` files (fst is an (R package)[https://www.fstpackage.org/]).
+The coal source impacts data is stored as compressed `.fst` files ([fst is an R package](https://www.fstpackage.org/). 
 
 The data is gridded with a 36km resolution. We use the following coordinate reference system projection:
 ```
