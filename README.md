@@ -112,6 +112,8 @@ grid.dat.r <- rasterFromXYZ( grid.dat.c, crs = p4s)
 plot( grid.dat.r)
 
 ```
+![](images/coal_impacts_raster.png)
+
 
 ## Spatial impacts as sf objects
 (Simple features objects)[https://r-spatial.github.io/sf/] have nice properties for some applications, and they play nicely with ggplot. Here is an example of code to create simple features objects from the data:
