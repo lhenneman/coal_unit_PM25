@@ -9,7 +9,7 @@ There are three datasets stored on the OSF page. This repository describes how t
 - **formatted data on coal facility attributes** from the [US EPA's Air Markets Program Database](https://ampd.epa.gov/ampd/) (coal_unit_scrubber_operation.csv)
 
 ## Data storage format
-The coal source impacts data is stored as compressed `.fst` files ([fst is an R package](https://www.fstpackage.org/). 
+The coal source impacts data is stored as compressed `.fst` files ([fst is an R package](https://www.fstpackage.org/)). 
 
 The source impacts data is gridded with a 36km resolution. We use the following coordinate reference system projection:
 ```
