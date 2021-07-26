@@ -67,7 +67,7 @@ summary( grid.dat)
 
 
 ## Unit coal PM2.5 source impacts
-These files are substantially larger, as each coal unit is assigned coal impacts in each year. The resulting data.table object has a row for each grid cell and a column for X/Y locations and each coal unit. 
+These files are substantially larger, as each coal unit is assigned coal impacts in each year. The resulting data.table object has a row for each grid cell-year combination and a column for X/Y locations and each coal unit. 
 ```
 # get the names of the gridded HyADS output files
 grid.files.unit.yr <- list.files( source_impacts_dir,
@@ -89,7 +89,7 @@ grid.unit.dat <- lapply( grid.files.unit.yr,
                          }) %>% rbindlist( fill = T)
 
 
-# summarize the data
+# check the dimensions
 dim( grid.unit.dat)
 
 ```
