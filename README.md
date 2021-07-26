@@ -19,7 +19,10 @@ p4s <- "+proj=lcc +lat_1=33 +lat_2=45 +lat_0=40 +lon_0=-97 +a=6370000 +b=6370000
 ```
 
 ## Reproducilibity using renv
-To ensure packages and formats are consistent, we have used the renv package[https://rstudio.github.io/renv/articles/renv.html]. To use the same packages used to create these data, install the renv package (`install.packages('renv')`), download the `renv.lock` file to your working directory, and run `renv::restore()`. 
+To ensure packages and formats are consistent, we have used the renv package[https://rstudio.github.io/renv/articles/renv.html]. To use the same packages used to create these data: 
+1) install the renv package (`install.packages('renv')`)
+2) download the `renv.lock` file from this repository to your working directory
+3) run `renv::restore()` in your R console
 
 # Download the files
 To retrieve the files,  download the files directly from the (OSF site)[https://osf.io/8gdau/]. Define the `source_impacts_dir` as the location to which you saved the files.
@@ -36,8 +39,8 @@ library( data.table)
 library( magrittr)
 library( raster)
 library( sf)
+library( ggplot2)
 ```
-
 
 ## Total coal PM2.5 source impacts
 The following code will read in total source impacts, i.e., the summed source impacts from all coal units.
@@ -64,7 +67,6 @@ grid.dat <- lapply( grid.files.yr,
 summary( grid.dat)
 
 ```
-
 
 ## Unit coal PM2.5 source impacts
 These files are substantially larger, as each coal unit is assigned coal impacts in each year. The resulting data.table object has a row for each grid cell-year combination and a column for X/Y locations and each coal unit. 
@@ -133,7 +135,7 @@ ggplot( grid.dat.sf.m[year %in% c( 'X1999', 'X2010', 'X2020')]) +
   facet_wrap( . ~ year)
 
 ```
-
+![](images/coal_impacts_sf.png)
 
 
 
