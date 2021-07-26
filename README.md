@@ -3,7 +3,7 @@ This repository describes data maintained for public use from the manuscript "22
 
 ## Available data
 There are three datasets stored on the OSF page. This repository describes how to read in and manipulate the first two datasets (coal source impacts).
-- coal source impacts
+- annual average coal source impacts (units: µg m^{-3})
   - summed impacts from all units (files named in the format "grids_pm25_total_YYYY.fst")
   - impacts from each coal unit (files named in the format "grids_pm25_byunit_YYYY.fst")
 - formatted data on coal facility attributes from the [US EPA's Air Markets Program Database](https://ampd.epa.gov/ampd/) (coal_unit_scrubber_operation.csv)
