@@ -1,9 +1,9 @@
 # Introduction
-This repository describes data maintained for public use from the manuscript "22 years of PM2.5 coal source impacts with the HyADS model" by L. Henneman et al. (in review). The data is stored on an [Open Science Framework project site](https://osf.io/8gdau/?view_only=8c4d01e3187f409ea4da93c292e33e1b).
+This repository describes data maintained for public use from the manuscript "22 years of PM<sub>2.5</sub> coal source impacts with the HyADS model" by L. Henneman et al. (in review). The data is stored on an [Open Science Framework project site](https://osf.io/8gdau/?view_only=8c4d01e3187f409ea4da93c292e33e1b).
 
 ## Available data
 There are three datasets stored on the OSF page. This repository describes how to read in and manipulate the first two datasets (coal source impacts).
-- annual average coal source impacts (units: µg m^{-3}; YYYY denotes the year, with 1999-2020 currently available)
+- annual average coal source impacts (units: µg m<sup>-3</sup>; YYYY denotes the year, with 1999-2020 currently available)
   - summed impacts from all units (files named in the format "grids_pm25_total_YYYY.fst")
   - impacts from each coal unit (files named in the format "grids_pm25_byunit_YYYY.fst")
 - formatted data on coal facility attributes from the [US EPA's Air Markets Program Database](https://ampd.epa.gov/ampd/) (coal_unit_scrubber_operation.csv)
@@ -43,7 +43,7 @@ source_impacts_dir <- '/Your/Source/Impacts/Directory'
 
 ```
 
-## Total coal PM2.5 source impacts
+## Total coal PM<sub>2.5</sub> source impacts
 The following code will read in total source impacts, i.e., the summed source impacts from all coal units.
 ```
 # get the names of the gridded HyADS output files from the data directory
@@ -66,7 +66,7 @@ summary( grid.dat)
 
 ```
 
-## Unit coal PM2.5 source impacts
+## Unit coal PM<sub>2.5</sub> source impacts
 These files are substantially larger, as the files contain each coal unit' is assigned coal's source impacts in each location in each year. The resulting data.table object has a row for each grid cell-year combination and a column for X/Y locations and each coal unit. 
 ```
 # get the names of the gridded HyADS output files
