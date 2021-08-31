@@ -6,6 +6,9 @@ There are three datasets stored on the OSF page. This repository describes how t
 - annual average coal source impacts (units: µg m<sup>-3</sup>; YYYY denotes the year, with 1999-2020 currently available)
   - **summed impacts from all units** (files named in the format "grids_pm25_total_YYYY.fst")
   - **impacts from each coal unit** (files named in the format "grids_pm25_byunit_YYYY.fst")
+- monthly average coal source impacts (units: µg m<sup>-3</sup>; YYYY denotes the year, MM denotes the month, with 1999-2020 currently available)
+  - **summed impacts from all units** (files named in the format "grids_pm25_total_YYYY_MM.fst")
+  - **impacts from each coal unit** (files named in the format "grids_pm25_byunit_YYYY_MM.fst")
 - **formatted data on coal facility attributes** from the [US EPA's Air Markets Program Database](https://ampd.epa.gov/ampd/) (coal_unit_scrubber_operation.csv)
 
 ## Data storage format
@@ -44,9 +47,9 @@ source_impacts_dir <- '/Your/Source/Impacts/Directory'
 ```
 
 ## Total coal PM<sub>2.5</sub> source impacts
-The following code will read in total source impacts, i.e., the summed source impacts from all coal units.
+The following code will read in total source impacts, i.e., the summed source impacts from all coal units. This first code chunk deals with annual files.
 ```
-# get the names of the gridded HyADS output files from the data directory
+# get the names of the gridded annual HyADS output files from the data directory
 grid.files.yr <- list.files( source_impacts_dir,
                              pattern = 'grids_pm25_total_\\d{4}\\.fst',
                              full.names = TRUE)
@@ -57,7 +60,7 @@ grid.dat <- lapply( grid.files.yr,
                       year.f <- gsub( '^.*_|\\.fst', '', f)
                       
                       in.f <- read.fst( f, as.data.table = T)
-                      setnames( in.f, 'V3', 'coal_pm25')
+                      setnames( in.f, 'vals.out', 'coal_pm25')
                       in.f[, year := year.f]
                     }) %>% rbindlist
 
@@ -66,8 +69,38 @@ summary( grid.dat)
 
 ```
 
+You may import monthly files using this code:
+```
+# get the names of the gridded monthly HyADS output files from the data directory
+grid.files.mo <- list.files( source_impacts_dir,
+                             pattern = 'grids_pm25_total_\\d{4}_\\d{2}\\.fst',
+                             full.names = TRUE)
+
+# read select files and combine into single data.table
+grid.dat.mo <- lapply( grid.files.mo,
+                    function( f){
+                          year.f <- gsub( '^.*total_|_\\d{2}\\.fst', '', f) %>%
+                             as( 'integer')
+                           mon.f <- gsub( '^.*_|\\.fst', '', f)
+                           
+                           in.f <- read.fst( f, as.data.table = T)
+                           in.f[, `:=` ( year = year.f,
+                                         month = mon.f,
+                                         year.month = paste( year.f, mon.f, sep = '_'))]
+                           
+                           in.f[ is.na( in.f)] <- 0
+                           setnames( in.f, 'vals.out', 'coal_pm25')
+                    }) %>% rbindlist
+
+# summarize the data
+summary( grid.dat.mo)
+
+```
+
 ## Unit coal PM<sub>2.5</sub> source impacts
-These files are substantially larger, as the files contain each coal unit' is assigned coal's source impacts in each location in each year. The resulting data.table object has a row for each grid cell-year combination and a column for X/Y locations and each coal unit. 
+These files are substantially larger, as the files contain each coal unit' is assigned coal's source impacts in each location in each year (or year-month). The resulting data.table object has a row for each grid cell-year combination and a column for X/Y locations and each coal unit. 
+
+We present code for annual unit-specific impacts. A similar approach may be used for monthly impacts.
 ```
 # get the names of the gridded HyADS output files
 grid.files.unit.yr <- list.files( source_impacts_dir,
@@ -114,7 +147,7 @@ plot( grid.dat.r)
 
 
 ## Spatial impacts as sf objects
-(Simple features objects)[https://r-spatial.github.io/sf/] have nice properties for some applications, and they play nicely with ggplot. Here is an example of code to create simple features objects from the data:
+[Simple features objects](https://r-spatial.github.io/sf/) have nice properties for some applications, and they play nicely with ggplot. Here is an example of code to create simple features objects from the data:
 ```
 # create sf object
 grid.dat.sf <- rasterToPolygons( grid.dat.r) %>%
