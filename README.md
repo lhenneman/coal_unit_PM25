@@ -7,7 +7,7 @@ Lucas Henneman
 # Introduction
 
 The data is stored on an [Open Science Framework project
-site](https://osf.io/8gdau/?view_only=8c4d01e3187f409ea4da93c292e33e1b).
+site](https://osf.io/8gdau).
 
 ## Available data
 
