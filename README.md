@@ -1,5 +1,4 @@
-Code to process unit-specific source impacts data for ‘22 years of
-coal-related PM2.5 exposure and inequities in the US’
+Code to process unit-specific source impacts data for ‘Inequitable Exposures to U.S. Coal Power Plant–Related  PM<sub>2.5</sub>: 22 Years and Counting’
 ================
 Lucas Henneman
 1/3/2023
@@ -205,3 +204,6 @@ is an example of code to create simple features objects from the data:
       facet_wrap( . ~ year)
 
 ![](images/coal_impacts_sf.png)
+
+# Citation
+Henneman, Rasel, Choirat, Anenberg, and Zigler. (2023). "Inequitable Exposures to U.S. Coal Power Plant–Related PM<sub>2.5</sub>: 22 Years and Counting." Environmental Health Perspectives. https://doi.org/10.1289/EHP11605.
