@@ -29,7 +29,7 @@ The coal source impacts data is stored as compressed `.fst` files ([fst is an R 
 The source impacts data is gridded with a 36km resolution. We use the following coordinate reference system projection:
 ```
 #coordinate reference system projection string for spatial data
-p4s <- "+proj=lcc +lat_1=33 +lat_2=45 +lat_0=40 +lon_0=-97 +a=6370000 +b=6370000"
+p4s <- "+proj=aea +lat_1=20 +lat_2=60 +lat_0=40 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m"
 ```
 
 ## Reproducilibity using renv
